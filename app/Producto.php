@@ -17,11 +17,11 @@ class Producto extends Model
 
     public function sucursal ()
     {
-
+        return $this->belongsTo(Sucursal::class, 'id_sucursal');
     }
 
     public function detalles_ventas ()
     {
-        
+        return $this->hasMany(DetalleVenta::class, 'id_producto');
     }
 }
