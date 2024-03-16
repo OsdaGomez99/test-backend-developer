@@ -12,6 +12,17 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getClientes ()
+    {
+        $clientes = Cliente::all();
+        return response()->json([
+            'Clientes' => $clientes
+        ]);
+    }
+
+
+
     public function index()
     {
         //

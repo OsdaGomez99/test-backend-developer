@@ -12,6 +12,15 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function getProductos ()
+     {
+        $productos = Producto::all();
+        return response()->json([
+            'Productos' => $productos
+        ]);
+     }
+
     public function index()
     {
         //

@@ -19,11 +19,11 @@ class DetalleVenta extends Model
 
     public function venta ()
     {
-
+        return $this->belongsTo(Venta::class, 'id_venta');
     }
 
     public function producto ()
     {
-        
+
     }
 }

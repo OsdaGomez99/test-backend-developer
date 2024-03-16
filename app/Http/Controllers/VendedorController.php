@@ -12,6 +12,16 @@ class VendedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function getVendedores ()
+     {
+        $vendedores = Vendedor::all();
+        return response()->json([
+            'Vendedores' => $vendedores
+        ]);
+     }
+
+
     public function index()
     {
         //

@@ -12,6 +12,16 @@ class ProveedorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getProveedores ()
+    {
+        $proveedores = Proveedor::all();
+        return response()->json([
+            'Proveedores' => $proveedores
+        ]);
+    }
+
+
     public function index()
     {
         //

@@ -22,7 +22,7 @@ class Vendedor extends Model
 
     public function ventas ()
     {
-
+        return $this->hasMany(Venta::class, 'id_vendedor');
     }
 
 

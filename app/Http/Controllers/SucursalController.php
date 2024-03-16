@@ -12,6 +12,16 @@ class SucursalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function getSucursales ()
+    {
+        $sucursales = Sucursal::all();
+        return response()->json([
+            'Sucursales' => $sucursales
+        ]);
+    }
+
+
     public function index()
     {
         //
