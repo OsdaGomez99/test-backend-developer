@@ -14,6 +14,67 @@ class VentaController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+        /**
+     * Listado de ventas con sus detalles de venta
+     * @OA\Get (
+     *     path="/api/getVentas",
+     *     tags={"Venta"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 type="array",
+     *                 property="rows",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="id",
+     *                         type="number",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="id_vendedor",
+     *                         type="number",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="id_cliente",
+     *                         type="number",
+     *                         example="2"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="id_sucursal",
+     *                         type="number",
+     *                         example="3"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="fecha_venta",
+     *                         type="string",
+     *                         example="2024-03-10"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="monto_total",
+     *                         type="number",
+     *                         example="123.45"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         example="2023-02-23T00:09:16.000000Z"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         example="2023-02-23T12:33:45.000000Z"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
+
     public function getVentas ()
     {
         $ventas = Venta::with(['detalles_venta', 'vendedor'])
@@ -35,6 +96,38 @@ class VentaController extends Controller
             'Ventas' => $ventas,
         ]);
     }
+/**
+ * Crear una nueva venta
+ * @OA\Post(
+ *     path="/api/createVenta",
+ *     tags={"Venta"},
+ *     summary="Crear una nueva venta",
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             @OA\Property(property="id_vendedor", type="number", example="1"),
+ *             @OA\Property(property="id_cliente", type="string", example="2"),
+ *             @OA\Property(property="id_sucursal", type="string", example="3"),
+ *             @OA\Property(property="fecha_venta", type="string", example="2014-03-10"),
+ *             @OA\Property(property="monto_total", type="number", example="123.45"),
+ *         ),
+ *     ),
+ *     @OA\Response(
+ *         response=201,
+ *         description="Venta creada exitosamente",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="message", type="string", example="Venta creada correctamente")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=422,
+ *         description="Error de validación",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="message", type="string", example="Error en los datos enviados")
+ *         )
+ *     )
+ * )
+ */
 
     public function createVenta (Request $request)
     {
@@ -84,7 +177,7 @@ class VentaController extends Controller
 
     public function index()
     {
-        //
+        return view ('ventas');
     }
 
     /**

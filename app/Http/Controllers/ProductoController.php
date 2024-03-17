@@ -13,6 +13,62 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+        /**
+     * Listado de productos
+     * @OA\Get (
+     *     path="/api/getProductos",
+     *     tags={"Producto"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 type="array",
+     *                 property="rows",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="id",
+     *                         type="number",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="nombre_pro",
+     *                         type="string",
+     *                         example="Pro"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="precio_pro",
+     *                         type="number",
+     *                         example="1234.56"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="stock_pro",
+     *                         type="number",
+     *                         example="123"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="id_sucursal",
+     *                         type="number",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         example="2023-02-23T00:09:16.000000Z"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         example="2023-02-23T12:33:45.000000Z"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
+
      public function getProductos ()
      {
         $productos = Producto::all();

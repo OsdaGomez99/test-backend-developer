@@ -10,6 +10,7 @@ $factory->define(Producto::class, function (Faker $faker) {
         'nombre_pro' => $faker->sentence(2),
         'precio_pro' => $faker->numberBetween(1.00, 999.99),
         'stock_pro' => $faker->numberBetween(0, 1000),
-        'id_sucursal' => $faker->numberBetween(1, 10)
+        'id_sucursal' => $faker->numberBetween(1, 10),
+        'id_proveedor' => $faker->numberBetween(1, 100)
     ];
 });

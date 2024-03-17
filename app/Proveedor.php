@@ -18,4 +18,9 @@ class Proveedor extends Model
         'pais_prov',
         'pagina_web'
     ];
+
+    public function productos()
+    {
+        return $this->hasMany(Producto::class, 'id_proveedor');
+    }
 }

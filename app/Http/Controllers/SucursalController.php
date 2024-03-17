@@ -13,6 +13,52 @@ class SucursalController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+        /**
+     * Listado de sucursales
+     * @OA\Get (
+     *     path="/api/getSucursales",
+     *     tags={"Sucursal"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 type="array",
+     *                 property="rows",
+     *                 @OA\Items(
+     *                     type="object",
+     *                     @OA\Property(
+     *                         property="id",
+     *                         type="number",
+     *                         example="1"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="pais",
+     *                         type="string",
+     *                         example="Chile"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="moneda",
+     *                         type="string",
+     *                         example="CLP"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="created_at",
+     *                         type="string",
+     *                         example="2023-02-23T00:09:16.000000Z"
+     *                     ),
+     *                     @OA\Property(
+     *                         property="updated_at",
+     *                         type="string",
+     *                         example="2023-02-23T12:33:45.000000Z"
+     *                     )
+     *                 )
+     *             )
+     *         )
+     *     )
+     * )
+     */
+
     public function getSucursales ()
     {
         $sucursales = Sucursal::all();
